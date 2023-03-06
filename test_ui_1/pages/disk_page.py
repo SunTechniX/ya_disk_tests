@@ -13,8 +13,16 @@ class DiskPage(BasePage):
         link = self.browser.find_element(*DiskPageLocators.LOGIN_BTN)
         link.click()
 
+    def go_to_hide_profile(self):
+        link = self.browser.find_element(*DiskPageLocators.LOGIN_PROFILE_HIDE)
+        link.click()
+
     def go_to_create_button(self):
         link = self.browser.find_element(*DiskPageLocators.DISK_CREATE)
+        link.click()
+
+    def go_to_close_ad_flash(self):
+        link = self.browser.find_element(*DiskPageLocators.AD_FLASH_CLOSE_BTN)
         link.click()
 
     def go_to_dir_plus(self):
@@ -76,6 +84,8 @@ class DiskPage(BasePage):
         link = self.browser.find_element(*DiskPageLocators.LOGOUT_LINK)
         link.click()
 
+    def is_ad_flash_show(self):
+        return self.is_element_present_silent(*DiskPageLocators.AD_FLASH)
 
     def should_be_authorized_user(self): # like BasePage.should_be_authorized_user()
         self.go_to_disk_login_page() # like BasePage.go_to_flash_login_page()

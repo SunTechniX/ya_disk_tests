@@ -20,7 +20,10 @@ class LoginPageLocators():
 class DiskPageLocators():
     LOGIN_BTN = (By.CSS_SELECTOR, "a.user-account")
     LOGIN_SUCCESS = (By.CSS_SELECTOR, 'img.user-pic__image')
+    LOGIN_PROFILE_HIDE = (By.CSS_SELECTOR, 'div.legouser_hidden_yes')
     LOGOUT_LINK = (By.CSS_SELECTOR, 'a.legouser__menu-item_action_exit')
+    AD_FLASH = (By.CSS_SELECTOR, 'div#app')
+    AD_FLASH_CLOSE_BTN = (By.CSS_SELECTOR, 'button.Base-Onboarding-Close')
     DISK_CREATE = (By.CSS_SELECTOR, 'span.create-resource-popup-with-anchor > button')
     DISK_DIR_PLUS = (By.CSS_SELECTOR, 'button > span.create-resource-button__text')
     #DISK_DIR_PLUS = (By.CSS_SELECTOR, 'button > span.file-icon_dir_plus')

@@ -21,7 +21,7 @@ class TestUserActionsFromYandexDiskPage():
         page = MainPage(browser, link)
         page.open()
         if page.is_captcha_form_show():
-            time.sleep(60)
+            time.sleep(40)
         page.should_be_flash_login_btn()
         page.go_to_flash_login_page()
         # time.sleep(5)
@@ -47,7 +47,10 @@ class TestUserActionsFromYandexDiskPage():
         link = LINK_DISK
         page = DiskPage(browser, link, timeout=10)
         page.open()
+        #if page.is_ad_flash_show():
+        #    page.go_to_close_ad_flash()
         page.should_be_authorized_user()  # пользователь залогинен
+        #page.go_to_hide_profile()
         # time.sleep(5)
 
         # Создание каталога
@@ -94,14 +97,3 @@ class TestUserActionsFromYandexDiskPage():
         # Разлогиниваемся
         page.go_to_logout()
 
-
-    @pytest.mark.skip
-    @pytest.mark.empty
-    def test_guest_cant_see_product_in_basket_opened_from_main_page(self, browser):
-        link = LINK
-        page = MainPage(browser, link)
-        page.open()
-        page.go_to_basket_page()  # переходим по ссылке в корзину
-        basket_page = DiskPage(browser, browser.current_url)
-        basket_page.should_not_be_basket_summary()
-        basket_page.should_be_empty_basket_msg()

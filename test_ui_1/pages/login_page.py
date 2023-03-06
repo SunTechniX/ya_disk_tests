@@ -15,11 +15,9 @@ class FlashLoginPage(BasePage):
         self.should_be_flash_login_via_yandex_button()
 
     def should_be_flash_login_form(self):
-        # реализуйте проверку, что есть форма логина
         assert self.is_element_present(*LoginPageLocators.LOGIN_FLASH_FORM), "Flash Login Form is not presented"
 
     def should_be_flash_login_via_yandex_button(self):
-        # реализуйте проверку, что есть форма логина
         assert self.is_element_present(*LoginPageLocators.LOGIN_FLASH_FORM_BTN_YID), "Login via Yandex Button is not presented"
 
 
