@@ -36,6 +36,8 @@ class DiskPageLocators():
     DISK_LISTING = (By.CSS_SELECTOR, 'div.listing_completed')
     #DISK_ITEMS = (By.CSS_SELECTOR, 'div.listing-item')
     DISK_ITEMS = (By.CSS_SELECTOR, 'div.listing-item_theme_tile')
+    #DISK_ITEMS_FILE = (By.CSS_SELECTOR, 'div.listing-item_theme_tile > div > div.listing-item__title')
+    DISK_ITEMS_FILE_TITLE = (By.CSS_SELECTOR, 'div.listing-item_theme_tile > div > div.listing-item__title > span') # нужен title
     #DISK_ITEMS_TITLE = (By.CSS_SELECTOR, 'div.listing-item__title') # in same function
     #DISK_ITEMS_TITLE = (By.CSS_SELECTOR, 'div.listing-item__title > span[title="SDET_UI_Test_1"]')
     #DISK_DIR_ROOT = (By.CSS_SELECTOR, 'div.crumbs2__head > div.crumbs2__item > span[id="/disk"]')
@@ -48,7 +50,8 @@ class DiskPageLocators():
 
     def get_DISK_ITEMS_TITLE_selector(self, name):
         #DISK_ITEMS_TITLE = (By.CSS_SELECTOR, f'div.listing-item__title > span[title="{name}"]')
-        DISK_ITEMS_TITLE = (By.CSS_SELECTOR, f'div.listing-item__title[aria-label="{name}"]')
+        #DISK_ITEMS_TITLE = (By.CSS_SELECTOR, f'div.listing-item__title[aria-label="{name}"]')
+        DISK_ITEMS_TITLE = (By.CSS_SELECTOR, f'div.listing-item_theme_tile > div > div.listing-item__title[aria-label="{name}"]')
         # div.listing-item__title[aria-label="SDET_UI_Dir_1"]
         #print(str(DISK_ITEMS_TITLE))
         return DISK_ITEMS_TITLE

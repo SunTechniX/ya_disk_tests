@@ -110,32 +110,35 @@ class DiskPage(BasePage):
         action.click(link)
         action.perform()
 
-    def del_list_objects_except(self, obj_name='obj_name'):
-        items = self.browser.find_elements(*DiskPageLocators.DISK_ITEMS)
-        obj_except = self.is_element_present(*DiskPageLocators.get_DISK_ITEMS_TITLE_selector(self, obj_name))
-        #print('>>>>> ', obj_except.text)
-        #print('>>>>> ', obj_except.get_property())
-        for object in items:
-            print('>>>>> ID ', object.id, obj_except.id)
-            if False: #object.id != obj_except.id:
+    #def id_item_object(self, obj_name='obj_name'):
+    #    obj_except = self.is_element_present(*DiskPageLocators.get_DISK_ITEMS_TITLE_selector(self, obj_name))
+    #    print('>>id>>', obj_except.id, obj_except.text)
+
+    #def id_item_objects(self):
+    #    items = self.browser.find_elements(*DiskPageLocators.DISK_ITEMS_FILE_TITLE)
+    #    for item in items:
+    #        attr_value = item.get_attribute('title')
+    #        #attr_value = item.get_attribute('aria_label')
+    #        print('>>>>', "'", attr_value, "'")  # item.id, item.text
+
+    def del_list_objects_except(self, name_obj_except='obj_name'):
+        items = self.browser.find_elements(*DiskPageLocators.DISK_ITEMS_FILE_TITLE)
+        for item in items:
+            #print(item.text, name_obj_except)
+            if item.get_attribute('title') != name_obj_except:
                 action = ActionChains(self.browser) # а-ля go_to_disk_file_click()
-                action.move_to_element(object)
-                action.click(object)
+                action.move_to_element(item)
+                action.click(item)
                 action.perform()
                 self.should_be_top_button_delete()
                 self.go_to_top_button_delete()
 
-        print('>>>>>>>>>>>', len(items))
-        #for each_item in items:
-        #listing = self.browser.find_element(*DiskPageLocators.DISK_LISTING)
-        print('>>>>>>>>>>>', items) #***
-
-    def get_list_objects(self):
-        items = self.browser.find_elements(*DiskPageLocators.DISK_ITEMS)
-        print('>>>>>>>>>>>', len(items))
-        #for each_item in items:
-        #listing = self.browser.find_element(*DiskPageLocators.DISK_LISTING)
-        print('>>>>>>>>>>>', items) #***
+    #def get_list_objects(self):
+    #    items = self.browser.find_elements(*DiskPageLocators.DISK_ITEMS)
+    #    print('>>>>>>>>>>>', len(items))
+    #    #for each_item in items:
+    #    #listing = self.browser.find_element(*DiskPageLocators.DISK_LISTING)
+    #    print('>>>>>>>>>>>', items) #***
 
     def go_to_logout(self):
         self.go_to_disk_login_page()

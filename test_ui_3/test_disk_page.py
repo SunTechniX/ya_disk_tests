@@ -40,7 +40,7 @@ class TestUserActionsFromYandexDiskPage():
         #time.sleep(5)
         login_page.should_be_authorized_user()  # проверить, что пользователь залогинен.
 
-    @pytest.mark.skip
+
     @pytest.mark.yandex_disk_part_1
     def test_yandex_disk_page_1(self, browser):
         # Яндекс Дик
@@ -99,7 +99,7 @@ class TestUserActionsFromYandexDiskPage():
         # Разлогиниваемся
         page.go_to_logout()
 
-    @pytest.mark.skip
+
     @pytest.mark.yandex_disk_part_2
     def test_yandex_disk_page_2(self, browser):
         # Яндекс Дик
@@ -159,7 +159,6 @@ class TestUserActionsFromYandexDiskPage():
         # Разлогиниваемся
         page.go_to_logout()
 
-    @pytest.mark.this_go
     @pytest.mark.yandex_disk_part_3
     def test_yandex_disk_page_3(self, browser):
         # Яндекс Дик
@@ -196,6 +195,8 @@ class TestUserActionsFromYandexDiskPage():
         time.sleep(3)
 
         # Удаление лишних файлов - del_other_files
+        #page.id_item_objects() # cheker
+        #page.id_item_object(file_name) # cheker
         page.del_list_objects_except(file_name)
 
           # Проверка имени файла
