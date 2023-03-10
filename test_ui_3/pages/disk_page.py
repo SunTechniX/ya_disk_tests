@@ -67,12 +67,16 @@ class DiskPage(BasePage):
         link = self.browser.find_element(*DiskPageLocators.DISK_CREATE)
         link.click()
 
+    def go_to_dialog_close_click(self):
+        link = self.browser.find_element(*DiskPageLocators.DLG_BUTTON_CLOSE)
+        link.click()
+
     def create_obj(self, name='my_name'):
         ed_name = self.browser.find_element(*DiskPageLocators.DISK_OBJ_NAME)
         ed_name.click() # set focus on edit field
         ed_name.clear() # whi this not working
-        #ed_name.send_keys(Keys.CONTROL + "a")
-        ed_name.send_keys(Keys.SHIFT, Keys.ARROW_UP)
+        ed_name.send_keys(Keys.CONTROL + "a")
+        #ed_name.send_keys(Keys.SHIFT, Keys.ARROW_UP)
         ed_name.send_keys(Keys.DELETE)
         #self.browser.execute_script("return arguments[0].scrollIntoView(true);", ed_name)
         #while ed_name.text != '':
@@ -103,8 +107,9 @@ class DiskPage(BasePage):
 
     def go_to_disk_file_click(self, name):
         link = self.browser.find_element(*DiskPageLocators.get_DISK_ITEMS_TITLE_selector(self, name))
-        # link.click()
-        # self.browser.execute_script("return arguments[0].scrollIntoView(true);", link)
+        print(link.get_attribute('aria_label'))
+        #link.click()
+        #self.browser.execute_script("return arguments[0].scrollIntoView(true);", link)
         action = ActionChains(self.browser)
         action.move_to_element(link)
         action.click(link)
@@ -148,17 +153,31 @@ class DiskPage(BasePage):
     def is_ad_flash_show(self):
         return self.is_element_present_silent(*DiskPageLocators.AD_FLASH)
 
+    def is_dlg_show(self):
+        return self.is_element_present_silent(*DiskPageLocators.DLG_BUTTON_CLOSE)
+
+    def scroll_to_top_button_copy(self):
+        link = self.browser.find_element(*DiskPageLocators.TOP_BUTTON_COPY)
+        self.browser.execute_script("return arguments[0].scrollIntoView(true);", link)
+        #reserv# ActionChains(self.browser).scroll_to_element(link).perform()
+
     def should_be_authorized_user(self): # like BasePage.should_be_authorized_user()
         self.go_to_disk_login_page() # like BasePage.go_to_flash_login_page()
         assert self.is_element_present(*DiskPageLocators.LOGIN_SUCCESS),\
             "User Avatar/icon is not presented," \
             " Probably unauthorised user"
 
+    def should_be_top_button_info(self):
+        assert self.is_element_present(*DiskPageLocators.TOP_BUTTON_INFO), "INFO Button is not presented"
+
     def should_be_top_button_copy(self):
         assert self.is_element_present(*DiskPageLocators.TOP_BUTTON_COPY), "Copy Button is not presented"
 
     def should_be_top_button_delete(self):
         assert self.is_element_present(*DiskPageLocators.TOP_BUTTON_DELETE), "Delete Button is not presented"
+
+    def should_be_top_button_more(self):
+        assert self.is_element_present(*DiskPageLocators.TOP_BUTTON_MORE), "MORE Button is not presented"
 
     def should_be_create_button(self):
         assert self.is_element_present(*DiskPageLocators.DISK_CREATE), "Create Button is not presented"

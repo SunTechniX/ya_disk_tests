@@ -42,11 +42,13 @@ class DiskPageLocators():
     #DISK_ITEMS_TITLE = (By.CSS_SELECTOR, 'div.listing-item__title > span[title="SDET_UI_Test_1"]')
     #DISK_DIR_ROOT = (By.CSS_SELECTOR, 'div.crumbs2__head > div.crumbs2__item > span[id="/disk"]')
     DISK_DIR_ROOT = (By.CSS_SELECTOR, 'span[id="/disk"]')
+    TOP_BUTTON_INFO = (By.CSS_SELECTOR, 'button.Button2_view_clear-inverse')
     TOP_BUTTON_COPY = (By.CSS_SELECTOR, 'button.groupable-buttons__visible-button_name_copy')
     TOP_BUTTON_DELETE = (By.CSS_SELECTOR, 'button.groupable-buttons__visible-button_name_delete')
-    DLG_BUTTON_COPY = (By.CSS_SELECTOR, 'button.confirmation-dialog__button_submit')
+    TOP_BUTTON_MORE = (By.CSS_SELECTOR, 'button.groupable-buttons__more-button')
     DLG_DIR_ROOT = (By.CSS_SELECTOR, 'div.file-icon_dir_root')
-    DLG_DIR_ROO1 = (By.CSS_SELECTOR, 'div.b-tree__name')
+    DLG_BUTTON_COPY = (By.CSS_SELECTOR, 'button.confirmation-dialog__button_submit')
+    DLG_BUTTON_CLOSE = (By.CSS_SELECTOR, 'button.dialog__close')
 
     def get_DISK_ITEMS_TITLE_selector(self, name):
         #DISK_ITEMS_TITLE = (By.CSS_SELECTOR, f'div.listing-item__title > span[title="{name}"]')
