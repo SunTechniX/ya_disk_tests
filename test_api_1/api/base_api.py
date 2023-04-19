@@ -69,10 +69,10 @@ class BaseApi:
                                     if show_tree == '':
                                         show_tree += '└─'
                                     else:
-                                        show_tree = ' ' * len(show_tree) + '└─'
-                                    self.list_dirs_discover(item['path'], show_tree)
-                                    if show_tree[0] == ' ':
-                                        show_tree = show_tree[1:]
+                                        show_tree = '  ' * (len(show_tree) // 2) + '└─'
+                                    self.dir_list_discover(item['path'], show_tree)
+                                    if show_tree[0:2] == '  ':
+                                        show_tree = show_tree[2:]
 
     def files_list(self, path):
         req_path = f'{BaseApiLocators.URLfiles}?path={path}'

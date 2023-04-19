@@ -18,11 +18,10 @@ class TestUserActionsFromAPIYandexDisk():
         print('Список каталогов (с древовидной структурой):')
         TestApi5.test_dirs_list()
 
-    @pytest.mark.skip
     @pytest.mark.yandex_disk_part_6
     def test_yandex_disk_page_6(self):
         TestApi6 = TestApi_01()
-        new_path_dir = 'DET_API_Dir_6'
+        new_path_dir = 'SDET_API_Dir6'
         TestApi6.test_dir_create(new_path_dir)
         print(f'\nСписок каталогов (с каталогом {new_path_dir}):\n')
         TestApi6.test_dirs_list()
@@ -33,7 +32,7 @@ class TestUserActionsFromAPIYandexDisk():
     @pytest.mark.yandex_disk_part_7
     def test_yandex_disk_page_7(self):
         TestApi7 = TestApi_01()
-        new_path_dir = 'SDET_API_Dir_7'
+        new_path_dir = 'SDET_API_Dir7'
         file_name = BaseApiLocators.FILE_FOR_COPY
         file_name_rename = BaseApiLocators.FILE_RENAME
         TestApi7.test_dir_create(new_path_dir)
