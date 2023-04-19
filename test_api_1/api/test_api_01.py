@@ -6,23 +6,21 @@ from .locators import BaseApiLocators
 class TestApi_01(BaseApi):
     def __init__(self):
         super().__init__()
-        self.url = BaseApiLocators.URL
-        self.url_files = BaseApiLocators.URLfiles
         self.token = BaseApiLocators.TOKEN
         self.headers = BaseApiLocators.HEADERS
 
-    def test_list_files(self):
+    def test_files_list(self):
         print()
-        self.list_files('')
+        self.files_list('')
 
     def test_obj_exist(self, path):
         self.object_exist(path)
 
-    def test_list_dirs(self):
-        self.list_dirs_discover('/', '')
+    def test_dirs_list(self):
+        self.dir_list_discover('/', '')
 
-    def test_create_dir(self, path):
-        self.create_dir(path)
+    def test_dir_create(self, path):
+        self.dir_create(path)
 
-    def test_delete_dir(self, path):
-        self.delete_dir(path)
+    def test_dir_delete(self, path):
+        self.dir_delete(path)
